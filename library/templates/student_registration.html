@@ -1,0 +1,137 @@
+{% extends 'basic.html' %}
+{% load static %}
+{% block title %} Library Management System {% endblock %}
+{% block css %}
+<style>
+    body {
+        background-color: #f8f9fa; 
+    }
+
+    .container {
+        margin-top: 2%;
+        margin-bottom: 2%;
+        border-radius: 0.5rem;
+        background: #fff;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        padding: 3%;
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 5px;
+        color: #343a40; 
+        text-decoration: underline; 
+    }
+
+    .form-group label {
+        font-weight: bold;
+        color: #343a40; 
+    }
+
+    .form-control {
+        border: 1px solid #ced4da;
+        border-radius: 10px; 
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+    }
+
+    .btn-outline-primary {
+        background-color: #007bff; 
+        color: #fff; 
+        border-color: #007bff; 
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .btn-outline-primary:hover {
+        background-color: #0056b3; 
+        border-color: #0056b3;
+    }
+
+    p {
+        color: #6c757d; 
+    }
+
+    b {
+        color: #343a40;
+    }
+</style>
+{% endblock %}
+{% block body %}
+<div class="container">
+    <form method="POST" enctype="multipart/form-data"> {% csrf_token %}
+        <br>
+        <h1>Student Registration</h1>
+        <div class="row mt-4">
+            <div class="form-group col-md-12">
+                <label for="username">Username</label>
+                <input type="text" class="form-control mt-2" id="username" name="username" placeholder="Enter Username" required>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="form-group col-md-6">
+                <label for="first_name">First Name</label>
+                <input type="text" class="form-control mt-2" id="first_name" name="first_name" placeholder="Enter First Name" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="last_name">Last Name</label>
+                <input type="text" class="form-control mt-2" id="last_name" name="last_name" placeholder="Enter Last Name" required>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="form-group col-md-6">
+                <label for="email">Email</label>
+                <input type="email" class="form-control mt-2" id="email" name="email" placeholder="Enter Email" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="phone">Mobile Number</label>
+                <input type="number" class="form-control mt-2" id="phone" name="phone" placeholder="Enter Mobile Number" required>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="form-group col-md-6">
+                <label for="branch">Branch Name</label>
+                <input type="text" class="form-control mt-2" id="branch" name="branch" placeholder="Enter Branch Name" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="classroom">Class Name</label>
+                <input type="text" class="form-control mt-2" id="classroom" name="classroom" placeholder="Enter Class Name" required>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="form-group col-md-6">
+                <label for="roll_no">Roll Number</label>
+                <input type="text" class="form-control mt-2" id="roll_no" name="roll_no" placeholder="Enter Roll Number" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="image">Student Image</label>
+                <input type="file" class="form-control mt-2" id="image" name="image" required>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="form-group col-md-6">
+                <label for="password">Password</label>
+                <input type="password" class="form-control mt-2" id="password" name="password" placeholder="Enter Password" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="confirm_password">Confirm Password</label>
+                <input type="password" class="form-control mt-2" id="confirm_password" name="confirm_password" placeholder="Confirm Password" required>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-outline-primary mt-4">Register As Student</button>
+    </form>
+</div>
+{% endblock %}
+{% block js %}
+<script>
+    {% if alert %}
+    alert("Registration Successful.");
+    document.location = "/student_login";
+    {% endif %}
+</script>
+{% endblock %}

@@ -1,0 +1,86 @@
+{% extends 'student_navbar.html' %}
+
+{% block title %} Edit Profile {% endblock %}
+
+{% block css %}
+<style>
+  body {
+    background-color: #f8f9fa; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    padding-top: 20px; 
+  }
+
+  .container {
+    background-color: #ffffff; 
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+    padding: 20px;
+    max-width: 600px; 
+    margin: auto;
+  }
+
+  .form-control {
+    border-color: #ced4da; 
+  }
+
+  .form-control:focus {
+    border-color: #0d6efd; 
+    box-shadow: 0 0 0 0.25rem rgba(13,110,253,0.25);
+  }
+
+  .btn-outline-primary {
+    width: 100%; 
+    margin-top: 20px;
+  }
+
+  label {
+    font-weight: bold; 
+  }
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <form method="POST"> {% csrf_token %}
+        <div class="row mt-4">
+            <div class="form-group col-md-6">
+                <label>Email</label>
+                <input type="email" class="form-control mt-2" name="email" value="{{user.email}}">
+            </div>
+            <div class="form-group col-md-6">
+                <label>Mobile Number</label>
+                <input type="number" class="form-control mt-2" name="phone" value="{{user.student.phone}}">
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="form-group col-md-6">
+                <label>Branch Name</label>
+                <input type="text" class="form-control mt-2" name="branch" value="{{user.student.branch}}">
+            </div>
+            <div class="form-group col-md-6">
+                <label>Class Name</label>
+                <input type="text" class="form-control mt-2" name="classroom" value="{{user.student.classroom}}">
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="form-group col-md-6">
+                <label>Roll Number</label>
+                <input type="text" class="form-control mt-2" name="roll_no" value="{{user.student.roll_no}}">
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-outline-primary mt-4">Update Profile</button>
+    </form>
+</div>
+{% endblock %}
+
+{% block js %}
+<script>
+    {% if alert %}
+    alert("Profile Updated Successfully.")
+    document.location = "/profile"
+    {% endif %}
+</script>
+{% endblock %}

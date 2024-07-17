@@ -1,0 +1,142 @@
+{% extends 'student_navbar.html' %}
+
+{% block title %} Profile {% endblock %}
+
+{% block css %}
+<style>
+.profile {
+    padding: 3%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    border-radius: 0.5rem;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.profile-img {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.profile-img img {
+    width: 100%;
+    max-width: 310px;
+    height: auto;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1); 
+}
+
+.profile-tab {
+    padding: 20px;
+}
+
+.profile-tab .row {
+    margin-bottom: 10px;
+}
+
+.profile-tab label {
+    font-weight: bold;
+}
+
+.profile-tab p {
+    margin-bottom: 0;
+}
+
+.btn-edit-profile {
+    width: 9rem;
+}
+
+.btn-edit-profile:hover {
+    background-color: #0d6efd;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .profile-img img {
+        max-width: 200px;
+    }
+}
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="container profile">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="profile-img">
+                <img src="{{ user.student.image.url }}" alt="">
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="profile-tab">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>ID:</label>
+                    </div>
+                    <div class="col-md-6">
+                        <p>{{ user.id }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Username:</label>
+                    </div>
+                    <div class="col-md-6">
+                        <p>{{ user }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Full Name:</label>
+                    </div>
+                    <div class="col-md-6">
+                        <p>{{ user.get_full_name }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Email:</label>
+                    </div>
+                    <div class="col-md-6">
+                        <p>{{ user.email }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Phone Number:</label>
+                    </div>
+                    <div class="col-md-6">
+                        <p>{{ user.student.phone }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Branch:</label>
+                    </div>
+                    <div class="col-md-6">
+                        <p>{{ user.student.branch }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Class:</label>
+                    </div>
+                    <div class="col-md-6">
+                        <p>{{ user.student.classroom }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Roll Number:</label>
+                    </div>
+                    <div class="col-md-6">
+                        <p>{{ user.student.roll_no }}</p>
+                    </div>
+                </div>
+                <a href="/edit_profile/" class="btn btn-outline-primary mt-3 btn-edit-profile">Edit Profile</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

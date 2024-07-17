@@ -1,0 +1,65 @@
+{% extends 'admin_navbar.html' %}
+{% load static %}
+{% block title %} Issue Book {% endblock %}
+{% block css %}
+<style>
+  body {
+    background-color: #f8f9fa; /* Light gray background */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Font family */
+    padding-top: 20px; /* Top padding for content */
+  }
+
+  .container {
+    background-color: #ffffff; 
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+    padding: 20px; 
+    max-width: 600px; 
+
+  .form-group {
+    margin-bottom: 20px; 
+  }
+
+  .form-control {
+    border-color: #ced4da; 
+  }
+
+  .form-control:focus {
+    border-color: #0d6efd; 
+    box-shadow: 0 0 0 0.25rem rgba(13,110,253,0.25); 
+  }
+
+  .btn-outline-primary {
+    width: 100%; 
+    margin-top: 20px; 
+
+  .control-label {
+    font-weight: bold; 
+  }
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <form method="POST"> {% csrf_token %}
+        {% for i in form %}
+        <div class="form-group">
+            <label class="control-label col-xs-4">{{ i.label_tag }}</label>
+            <div class="col-xs-8 mt-2">
+                {{ i }}
+            </div>
+        </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-outline-primary mt-4">Issue Book</button>
+    </form>
+</div>
+{% endblock %}
+
+{% block js %}
+<script>
+    {% if alert %}
+    alert("Book Successfully Issued.")
+    document.location = "/issue_book"
+    {% endif %}
+</script>
+{% endblock %}

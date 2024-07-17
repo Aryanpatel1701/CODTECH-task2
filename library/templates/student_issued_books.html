@@ -1,0 +1,81 @@
+{% extends 'student_navbar.html' %}
+
+{% block title %} All Students List {% endblock %}
+
+{% block css %}
+<style>
+    .container {
+        padding: 3%;
+        margin-top: 3%;
+        margin-bottom: 3%;
+        border-radius: 0.5rem;
+        background: #fff;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .table {
+        width: 100%;
+        margin-top: 20px;
+        border-collapse: collapse;
+        border-radius: 0.5rem;
+        overflow: hidden;
+        box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+
+    .table th, .table td {
+        padding: 12px;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .table thead {
+        background-color: #f8f9fa;
+        color: #212529;
+    }
+
+    .table tbody tr:hover {
+        background-color: #f2f2f2;
+    }
+
+    .table th {
+        background-color: #0d6efd;
+        color: #fff;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <h1 class="text-center"><u>All Issued Books</u></h1>
+    <table class="table table-hover" id="example">
+        <thead>
+            <tr>
+                <th>Sr.No</th>
+                <th>Student ID</th>
+                <th>Student Name</th>
+                <th>Book Name</th>
+                <th>Author</th>
+                <th>Issued Date</th>
+                <th>Expiry Date</th>
+                <th>Fine</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in li1 %}
+            <tr>
+                <td>{{ forloop.counter }}.</td>
+                <td>{{ i.0 }}</td>
+                <td>{{ i.1 }}</td>
+                <td>{{ i.2 }}</td>
+                <td>{{ i.3 }}</td>
+                {% endfor %}
+                {% for i in li2 %}
+                <td>{{ i.0 }}</td>
+                <td>{{ i.1 }}</td>
+                <td>₹ {{ i.2 }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

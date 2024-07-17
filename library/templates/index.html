@@ -1,0 +1,67 @@
+{% extends 'basic.html' %}
+{% load static %}
+{% block title %} Library Management System {% endblock %}
+{% block css %}
+<style>
+  .container-fluid {
+    background-color: #f8f9fa;
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+    text-align: center;
+  }
+
+  .display-5 {
+    color: #343a40; 
+  }
+
+  .fs-4 {
+    color: #6c757d;
+  }
+
+  .btn-primary {
+    width: auto;
+    margin-top: 10px;
+  }
+
+  .btn-outline-primary {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .btn-outline-primary:hover {
+    background-color: #0d6efd; 
+    color: white;
+  }
+
+  .row {
+    margin-top: 20px;
+  }
+
+  img {
+    border-radius: 5px; 
+    margin-bottom: 10px;
+  }
+</style>
+{% endblock %}
+{% block body %}
+<div class="p-4 bg-light">
+  <div class="container-fluid py-3">
+    <h1 class="display-5 fw-bold">Welcome to the Library Management System</h1>
+    <p class="col-md-8 fs-4 mx-auto">Explore our collection of books and manage your library activities effortlessly.</p>
+    <a href="/student_registration/" class="btn btn-primary btn-lg">Register as Student</a>
+  </div>
+  <br>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 text-center">
+        <img src="{% static 'admin.png' %}" width="50%" height="50%" alt="Admin">
+        <a class="btn btn-outline-primary btn-lg" href="/admin_login/">Admin</a>
+      </div>
+      <div class="col-lg-6 text-center">
+        <img src="{% static 'student.png' %}" width="50%" height="50%" alt="Student">
+        <a class="btn btn-outline-primary btn-lg" href="/student_login/">Student</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

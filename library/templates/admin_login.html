@@ -1,0 +1,83 @@
+{% extends 'basic.html' %}
+{% load static %}
+{% block title %} Library Management System {% endblock %}
+{% block css %}
+<style>
+  .container {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+    padding: 20px;
+    margin-top: 20px;
+  }
+
+  h1.text-center {
+    color: #343a40; 
+    margin-bottom: 20px;
+  }
+
+  .form-group label {
+    font-weight: bold;
+    color: #343a40; 
+  }
+
+  .form-control {
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+  }
+
+  .btn-outline-primary {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .btn-outline-primary:hover {
+    background-color: #0d6efd; 
+    color: white;
+  }
+
+  .mt-4 {
+    margin-top: 20px;
+  }
+
+  p {
+    color: #6c757d; 
+  }
+
+  b {
+    color: #343a40; 
+  }
+</style>
+{% endblock %}
+{% block body %}
+<div class="container">
+<br>
+<h1 class="text-center"><u>Admin Login</u></h1><br>
+<p><b>Note:</b> Only the admin can login from here. No student will be allowed to login.</p>
+    <form method="POST"> {% csrf_token %}
+
+    <div class="row mt-4">
+        <div class="form-group col-md-12">
+            <label><i style="font-weight: bold;">Username</i></label>
+            <input type="text" class="form-control mt-2" name="username" placeholder="Enter Username" required>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="form-group col-md-12">
+            <label><i style="font-weight: bold;">Password</i></label>
+            <input type="password" class="form-control mt-2" name="password" placeholder="Enter Password" required>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-outline-primary mt-4">Login</button>
+</div>
+</form>
+{% endblock %}
+{% block js %}
+<script>
+    {% if alert %}
+    alert("Invalid Username or Password.")
+    document.location = "/admin_login"
+    {% endif %}
+</script>
+{% endblock %}
